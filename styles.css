@@ -24,6 +24,12 @@ body {
     radial-gradient(circle at bottom right, rgba(255, 181, 232, 0.16), transparent 20%),
     var(--bg);
   color: var(--text);
+  cursor: auto;
+}
+
+button,
+a {
+  cursor: pointer;
 }
 
 a {
@@ -38,24 +44,11 @@ textarea {
   font: inherit;
 }
 
-button {
-  cursor: pointer;
-}
-
 .glass-panel {
   background: rgba(255, 255, 255, 0.82);
   border: 1px solid rgba(255, 255, 255, 0.54);
   box-shadow: 0 40px 90px rgba(123, 97, 255, 0.12);
   backdrop-filter: blur(18px);
-}
-
-.brand-dot {
-  display: inline-block;
-  width: 0.9rem;
-  height: 0.9rem;
-  border-radius: 999px;
-  background: var(--primary);
-  box-shadow: 0 0 20px rgba(123, 97, 255, 0.35);
 }
 
 .nav-link,
@@ -174,8 +167,7 @@ button {
 }
 
 .product-image,
-.gallery-item,
-.feed-card {
+.gallery-item {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
@@ -184,8 +176,7 @@ button {
   place-items: center;
 }
 
-.gallery-item,
-.feed-card {
+.gallery-item {
   min-height: 260px;
   border-radius: 32px;
   overflow: hidden;
@@ -195,8 +186,7 @@ button {
   color: var(--text);
 }
 
-.gallery-item span,
-.feed-card {
+.gallery-item span {
   position: absolute;
   left: 1rem;
   bottom: 1rem;
@@ -205,14 +195,17 @@ button {
   letter-spacing: 0.03em;
 }
 
-.gallery-item::before,
-.feed-card::before {
+.gallery-item::before {
   content: '';
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
   opacity: 0.95;
+}
+
+.feed-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .gallery-item:nth-child(1)::before { background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80'); }
@@ -234,8 +227,7 @@ button {
 }
 
 .gallery-item::after,
-.product-card::after,
-.feed-card::after {
+.product-card::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -396,18 +388,64 @@ button {
 .instagram-feed {
   display: grid;
   gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .feed-card {
-  min-height: 180px;
+  min-height: 220px;
   display: grid;
   place-items: center;
+  position: relative;
   border-radius: 32px;
-  background: linear-gradient(180deg, #fff, #f3eefb);
-  color: var(--text);
+  overflow: hidden;
+  border: 1px solid rgba(123, 97, 255, 0.12);
+  background: #000;
+  color: white;
   font-weight: 700;
   letter-spacing: 0.03em;
   box-shadow: 0 30px 70px rgba(123, 97, 255, 0.08);
+}
+
+.feed-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.92;
+  transition: transform 0.35s ease;
+}
+
+.instagram-feed .feed-card:nth-child(1)::before {
+  background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80');
+}
+
+.instagram-feed .feed-card:nth-child(2)::before {
+  background-image: url('https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=900&q=80');
+}
+
+.instagram-feed .feed-card:nth-child(3)::before {
+  background-image: url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80');
+}
+
+.instagram-feed .feed-card:nth-child(4)::before {
+  background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');
+}
+
+.feed-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 48, 0.18), rgba(15, 23, 48, 0.05));
+}
+
+.feed-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.feed-card:hover::before {
+  transform: scale(1.04);
 }
 
 .lightbox {
@@ -476,8 +514,20 @@ button {
   }
 }
 
+@media (max-width: 1024px) {
+  .instagram-feed {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
   .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .instagram-feed {
     grid-template-columns: 1fr;
   }
 }
