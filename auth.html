@@ -2,20 +2,20 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Acceso - ResinArte</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-gradient-to-br from-[#f8f5f0] via-[#fdf7f2] to-[#f0e8df]">
+  <body class="auth-page bg-gradient-to-br from-[#f8f5f0] via-[#fdf7f2] to-[#f0e8df]">
   <!-- Header -->
   <header class="bg-cover bg-no-repeat bg-center relative" style="background-image: linear-gradient(115deg, rgba(123, 97, 255, 0.8) 0%, rgba(188, 86, 244, 0.8) 100%), url('assets/images/backgrounds/FondoResinArte.webp'); height: 200px;">
-    <nav class="flex justify-between items-center px-8 py-6">
+    <nav class="auth-nav flex justify-between items-center px-8 py-6">
       <div class="flex items-center gap-3">
         <img src="assets/images/logo/LogoResinArte.webp" alt="Logo" class="logo-img">
         <span class="text-white text-2xl font-bold">ResinArte</span>
       </div>
-      <a href="index.html" class="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded transition">← Volver</a>
+      <a href="index.html" class="auth-back text-white hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded transition">Volver</a>
     </nav>
   </header>
 
@@ -23,7 +23,7 @@
   <main class="min-h-screen flex items-center justify-center px-4 py-12">
     <div class="w-full max-w-md">
       <!-- Toggle Buttons -->
-      <div class="flex gap-4 mb-8 bg-white rounded-lg p-1 shadow-md">
+      <div class="auth-tabs flex gap-4 mb-8 bg-white rounded-lg p-1 shadow-md">
         <button id="toggleLogin" class="auth-tab active flex-1 py-3 rounded font-semibold transition" data-mode="login">
           Iniciar sesión
         </button>
@@ -39,27 +39,32 @@
             Bienvenido de vuelta
           </h2>
           
-          <form id="formLogin" class="space-y-4">
+	          <form id="formLogin" class="space-y-4">
             <div>
               <label class="field-label mb-2">Correo</label>
-              <input 
-                type="email" 
-                id="loginEmail" 
-                placeholder="tu@correo.com" 
-                required 
-                class="field-input"
-              />
+	              <input 
+	                type="email" 
+	                id="loginEmail" 
+	                placeholder="tu@correo.com" 
+	                autocomplete="email"
+	                autocapitalize="none"
+	                autocorrect="off"
+	                inputmode="email"
+	                required 
+	                class="field-input"
+	              />
             </div>
 
             <div>
               <label class="field-label mb-2">Contraseña</label>
               <input 
-                type="password" 
-                id="loginPassword" 
-                placeholder="••••••••" 
-                required 
-                class="field-input"
-              />
+	                type="password" 
+	                id="loginPassword" 
+	                placeholder="••••••••" 
+	                autocomplete="current-password"
+	                required 
+	                class="field-input"
+	              />
             </div>
 
             <button type="submit" class="btn-primary w-full">
@@ -78,39 +83,59 @@
             Únete a ResinArte
           </h2>
           
-          <form id="formRegister" class="space-y-4">
-            <div>
-              <label class="field-label mb-2">Correo</label>
-              <input 
-                type="email" 
-                id="registerEmail" 
-                placeholder="tu@correo.com" 
-                required 
-                class="field-input"
-              />
+	          <form id="formRegister" class="space-y-4">
+	            <div>
+	              <label class="field-label mb-2">Nombre</label>
+	              <input
+	                type="text"
+	                id="registerName"
+	                placeholder="Tu nombre"
+	                autocomplete="name"
+	                required
+	                class="field-input"
+	              />
+	            </div>
+
+	            <div>
+	              <label class="field-label mb-2">Correo</label>
+	              <input 
+	                type="email" 
+	                id="registerEmail" 
+	                placeholder="tu@correo.com" 
+	                autocomplete="email"
+	                autocapitalize="none"
+	                autocorrect="off"
+	                inputmode="email"
+	                required 
+	                class="field-input"
+	              />
             </div>
 
             <div>
               <label class="field-label mb-2">Contraseña</label>
               <input 
-                type="password" 
-                id="registerPassword" 
-                placeholder="Mín. 6 caracteres" 
-                required 
-                class="field-input"
-              />
+	                type="password" 
+	                id="registerPassword" 
+	                placeholder="Mín. 6 caracteres" 
+	                autocomplete="new-password"
+	                minlength="6"
+	                required 
+	                class="field-input"
+	              />
               <p class="text-xs text-gray-500 mt-1">Mínimo 6 caracteres con mayúscula y número</p>
             </div>
 
             <div>
               <label class="field-label mb-2">Confirmar contraseña</label>
               <input 
-                type="password" 
-                id="registerPasswordConfirm" 
-                placeholder="••••••••" 
-                required 
-                class="field-input"
-              />
+	                type="password" 
+	                id="registerPasswordConfirm" 
+	                placeholder="••••••••" 
+	                autocomplete="new-password"
+	                minlength="6"
+	                required 
+	                class="field-input"
+	              />
             </div>
 
             <button type="submit" class="btn-primary w-full">
@@ -155,44 +180,71 @@
     // Login Handler
     document.getElementById('formLogin').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = document.getElementById('loginEmail').value;
-      const password = document.getElementById('loginPassword').value;
-      const errorDiv = document.getElementById('loginError');
+	      const email = document.getElementById('loginEmail').value;
+	      const password = document.getElementById('loginPassword').value;
+	      const errorDiv = document.getElementById('loginError');
+	      const submitButton = e.currentTarget.querySelector('button[type="submit"]');
+	      errorDiv.classList.add('hidden');
+	      submitButton.disabled = true;
+	      submitButton.textContent = 'Ingresando...';
 
-      const result = await handleLogin(email, password);
-      if (result.success) {
-        window.location.href = 'dashboard.html';
-      } else {
-        errorDiv.textContent = result.error;
-        errorDiv.classList.remove('hidden');
-      }
-    });
+	      const result = await handleLogin(email, password);
+	      if (result.success) {
+	        window.location.href = 'dashboard.html';
+	      } else {
+	        errorDiv.textContent = result.error;
+	        errorDiv.classList.remove('hidden');
+	        submitButton.disabled = false;
+	        submitButton.textContent = 'Iniciar sesión';
+	      }
+	    });
 
     // Register Handler
     document.getElementById('formRegister').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = document.getElementById('registerEmail').value;
-      const password = document.getElementById('registerPassword').value;
-      const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
-      const errorDiv = document.getElementById('registerError');
-      const successDiv = document.getElementById('registerSuccess');
+	      const name = document.getElementById('registerName').value.trim();
+	      const email = document.getElementById('registerEmail').value.trim();
+	      const password = document.getElementById('registerPassword').value;
+	      const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
+	      const errorDiv = document.getElementById('registerError');
+	      const successDiv = document.getElementById('registerSuccess');
+	      const submitButton = e.currentTarget.querySelector('button[type="submit"]');
+	      errorDiv.classList.add('hidden');
+	      successDiv.classList.add('hidden');
 
-      if (password !== passwordConfirm) {
-        errorDiv.textContent = 'Las contraseñas no coinciden';
-        errorDiv.classList.remove('hidden');
-        return;
-      }
+	      if (!name) {
+	        errorDiv.textContent = 'Ingresa tu nombre';
+	        errorDiv.classList.remove('hidden');
+	        return;
+	      }
 
-      const result = await handleRegister(email, password);
-      if (result.success) {
-        successDiv.textContent = '¡Cuenta creada! Revisa tu correo para confirmar. Luego podrás iniciar sesión.';
-        successDiv.classList.remove('hidden');
-        document.getElementById('formRegister').reset();
-      } else {
-        errorDiv.textContent = result.error;
-        errorDiv.classList.remove('hidden');
-      }
-    });
+	      if (password !== passwordConfirm) {
+	        errorDiv.textContent = 'Las contraseñas no coinciden';
+	        errorDiv.classList.remove('hidden');
+	        return;
+	      }
+
+	      if (!/^(?=.*[A-Z])(?=.*\d).{6,}$/.test(password)) {
+	        errorDiv.textContent = 'La contraseña debe tener mínimo 6 caracteres, una mayúscula y un número';
+	        errorDiv.classList.remove('hidden');
+	        return;
+	      }
+
+	      submitButton.disabled = true;
+	      submitButton.textContent = 'Creando cuenta...';
+
+	      const result = await handleRegister(email, password, { nombre: name, proyecto: 'ResinArte' });
+	      if (result.success) {
+	        successDiv.textContent = '¡Cuenta creada! Revisa tu correo para confirmar. Luego podrás iniciar sesión.';
+	        successDiv.classList.remove('hidden');
+	        document.getElementById('formRegister').reset();
+	      } else {
+	        errorDiv.textContent = result.error;
+	        errorDiv.classList.remove('hidden');
+	      }
+	      submitButton.disabled = false;
+	      submitButton.textContent = 'Crear cuenta';
+	    });
 
     // Add CSS for auth tabs
     const style = document.createElement('style');

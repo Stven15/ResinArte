@@ -109,7 +109,7 @@
     // Load user's personalizations
     async function loadPersonalizations() {
       try {
-        const { data, error } = await supabaseClient
+        const { data, error } = await window.supabaseClient
           .from('personalizaciones')
           .select('*')
           .eq('email', currentUser.email)
