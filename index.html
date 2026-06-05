@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body class="bg-[#F8F9FC] text-[#2D2D2D] overflow-x-hidden">
     <div class="fixed inset-0 pointer-events-none overflow-hidden">
@@ -23,10 +23,10 @@
       <div class="liquid-glow"></div>
     </div>
 
-    <header class="sticky top-0 z-50 border-b border-[#e8e8f0] bg-white/80 backdrop-blur-xl shadow-sm">
-      <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 md:px-8">
-        <a class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.35em] text-[#5A3BFF]" href="#home">
-          <span class="brand-name">ResinArte</span>
+    <header class="sticky top-0 z-50 border-b border-[#e8e8f0] backdrop-blur-xl shadow-sm">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-2 md:px-8">
+        <a class="flex items-center gap-3" href="#home">
+          <img src="assets/images/logo/LogoResinArte.webp" alt="ResinArte" class="logo-img" />
         </a>
 
         <button class="nav-toggle inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E4E1FF] bg-white text-[#2D2D2D] shadow-sm md:hidden"
@@ -285,18 +285,21 @@
             <form class="personalization-form glass-panel p-8 shadow-[0_30px_80px_rgba(123,97,255,0.12)]">
               <div class="grid gap-5">
                 <label class="field-label">Tu nombre</label>
-                <input type="text" placeholder="Ej. Ana Morales" required class="field-input" />
+                <input type="text" name="nombre" placeholder="Ej. Ana Morales" required class="field-input" />
+
+                <label class="field-label">Tu correo</label>
+                <input type="email" name="email" placeholder="tu@correo.com" required class="field-input" />
 
                 <label class="field-label">Sube tu inspiración</label>
-                <input type="file" accept="image/*" class="field-input file-input" />
+                <input type="file" name="imagen" accept="image/*" class="field-input file-input" />
 
                 <label class="field-label">Texto para la pieza</label>
-                <input type="text" placeholder="Mensaje, frase o nombre" class="field-input" />
+                <input type="text" name="texto" placeholder="Mensaje, frase o nombre" class="field-input" />
 
                 <div class="grid gap-5 sm:grid-cols-2">
                   <div>
                     <label class="field-label">Color preferido</label>
-                    <select class="field-input" required>
+                    <select name="color" class="field-input" required>
                       <option value="">Elegir tono</option>
                       <option>Perlado rosa</option>
                       <option>Celeste cristal</option>
@@ -306,7 +309,7 @@
                   </div>
                   <div>
                     <label class="field-label">Tamaño</label>
-                    <select class="field-input" required>
+                    <select name="tamaño" class="field-input" required>
                       <option value="">Seleccionar</option>
                       <option>Pequeño</option>
                       <option>Mediano</option>
@@ -317,7 +320,7 @@
                 </div>
 
                 <label class="field-label">Comentarios adicionales</label>
-                <textarea rows="4" placeholder="Describe tu idea o estilo" class="field-input resize-none"></textarea>
+                <textarea name="comentarios" rows="4" placeholder="Describe tu idea o estilo" class="field-input resize-none"></textarea>
 
                 <button type="submit" class="btn-primary w-full">Enviar solicitud</button>
                 <p class="text-sm text-[#6B6B6B]">Te contactaremos en menos de 24 horas para confirmar tu diseño personalizado.</p>
@@ -374,10 +377,30 @@
               <p class="mt-4 max-w-xl text-sm leading-7 text-[#5A5A5A]">Síguenos para ver lanzamientos, detalles de piezas y procesar pedidos exclusivos con inspiración constante.</p>
             </div>
             <div class="social-grid rounded-[32px] bg-[#F7F4FF] p-6 shadow-[0_30px_50px_rgba(123,97,255,0.12)]">
-              <a href="#" class="social-pill">Instagram</a>
-              <a href="#" class="social-pill">Facebook</a>
-              <a href="#" class="social-pill">TikTok</a>
-              <a href="#" class="social-pill">WhatsApp</a>
+              <a href="https://www.instagram.com/arte.con.resina10" class="social-pill instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <span class="icon">
+                  <img src="assets/images/social/instagram.webp" alt="Instagram" loading="lazy" />
+                </span>
+                Instagram
+              </a>
+              <a href="https://www.facebook.com/share/18UeDzGNxa/?mibextid=wwXIfr" class="social-pill facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <span class="icon">
+                  <img src="assets/images/social/facebook.webp" alt="Facebook" loading="lazy" />
+                </span>
+                Facebook
+              </a>
+              <a href="https://www.tiktok.com/@resinarte10q" class="social-pill tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <span class="icon">
+                  <img src="assets/images/social/tiktok.webp" alt="TikTok" loading="lazy" />
+                </span>
+                TikTok
+              </a>
+              <a href="https://wa.me/56912345678?text=Hola%20ResinArte%20quiero%20saber%20m%C3%A1s" class="social-pill whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <span class="icon">
+                  <img src="assets/images/social/whatsapp.webp" alt="WhatsApp" loading="lazy" />
+                </span>
+                WhatsApp
+              </a>
             </div>
           </div>
           <div class="instagram-feed grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-label="Instagram feed">
@@ -418,11 +441,27 @@
       </div>
     </footer>
 
-    <div class="fixed right-5 bottom-5 z-50 flex flex-col gap-3">
-      <a href="#" class="social-floating">IG</a>
-      <a href="#" class="social-floating">FB</a>
-      <a href="#" class="social-floating">TT</a>
-      <a href="#" class="social-floating">WA</a>
+    <div class="fixed right-5 bottom-5 z-50 flex flex-col gap-3 hidden md:flex">
+      <a href="https://www.instagram.com/arte.con.resina10" class="social-floating instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <span class="icon">
+          <img src="assets/images/social/instagram.webp" alt="Instagram" loading="lazy" />
+        </span>
+      </a>
+      <a href="https://www.facebook.com/share/18UeDzGNxa/?mibextid=wwXIfr" class="social-floating facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <span class="icon">
+          <img src="assets/images/social/facebook.webp" alt="Facebook" loading="lazy" />
+        </span>
+      </a>
+      <a href="https://www.tiktok.com/@resinarte10q" class="social-floating tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <span class="icon">
+          <img src="assets/images/social/tiktok.webp" alt="TikTok" loading="lazy" />
+        </span>
+      </a>
+      <a href="https://wa.me/56912345678?text=Hola%20ResinArte%20quiero%20saber%20m%C3%A1s" class="social-floating whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <span class="icon">
+          <img src="assets/images/social/whatsapp.webp" alt="WhatsApp" loading="lazy" />
+        </span>
+      </a>
     </div>
 
     <div class="lightbox hidden" id="lightbox">
@@ -430,8 +469,11 @@
       <img alt="Detalle producto" class="lightbox-image" />
     </div>
 
-    <script src="config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/form-handler.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
