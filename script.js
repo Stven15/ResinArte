@@ -28,21 +28,6 @@ function initStickyHeader() {
   });
 }
 
-function initCursorFollower() {
-  const cursor = document.querySelector('.cursor-follower');
-  if (!cursor) return;
-
-  document.addEventListener('mousemove', event => {
-    cursor.style.left = `${event.clientX}px`;
-    cursor.style.top = `${event.clientY}px`;
-  });
-
-  document.querySelectorAll('a, button, .gallery-item, .testimonial-control').forEach(element => {
-    element.addEventListener('mouseenter', () => cursor.classList.add('active'));
-    element.addEventListener('mouseleave', () => cursor.classList.remove('active'));
-  });
-}
-
 function initGalleryLightbox() {
   const lightbox = document.querySelector('.lightbox');
   const lightboxImage = document.querySelector('.lightbox-image');
@@ -283,7 +268,6 @@ function initApp() {
   initSmoothScroll();
   initMobileMenu();
   initStickyHeader();
-  initCursorFollower();
   initGalleryLightbox();
   initTestimonials();
   initProductCollection();
