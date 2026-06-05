@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso - ResinArte</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gradient-to-br from-[#f8f5f0] via-[#fdf7f2] to-[#f0e8df]">
+  <!-- Header -->
+  <header class="bg-cover bg-no-repeat bg-center relative" style="background-image: linear-gradient(115deg, rgba(123, 97, 255, 0.8) 0%, rgba(188, 86, 244, 0.8) 100%), url('assets/images/backgrounds/FondoResinArte.webp'); height: 200px;">
+    <nav class="flex justify-between items-center px-8 py-6">
+      <div class="flex items-center gap-3">
+        <img src="assets/images/logo/LogoResinArte.webp" alt="Logo" class="logo-img">
+        <span class="text-white text-2xl font-bold">ResinArte</span>
+      </div>
+      <a href="index.html" class="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded transition">← Volver</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="min-h-screen flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-md">
+      <!-- Toggle Buttons -->
+      <div class="flex gap-4 mb-8 bg-white rounded-lg p-1 shadow-md">
+        <button id="toggleLogin" class="auth-tab active flex-1 py-3 rounded font-semibold transition" data-mode="login">
+          Iniciar sesión
+        </button>
+        <button id="toggleRegister" class="auth-tab flex-1 py-3 rounded font-semibold transition" data-mode="register">
+          Registrarse
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="loginForm" class="auth-form active">
+        <div class="bg-white rounded-2xl p-8 shadow-xl">
+          <h2 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#7B61FF] to-[#BC56F4]">
+            Bienvenido de vuelta
+          </h2>
+          
+          <form id="formLogin" class="space-y-4">
+            <div>
+              <label class="field-label mb-2">Correo</label>
+              <input 
+                type="email" 
+                id="loginEmail" 
+                placeholder="tu@correo.com" 
+                required 
+                class="field-input"
+              />
+            </div>
+
+            <div>
+              <label class="field-label mb-2">Contraseña</label>
+              <input 
+                type="password" 
+                id="loginPassword" 
+                placeholder="••••••••" 
+                required 
+                class="field-input"
+              />
+            </div>
+
+            <button type="submit" class="btn-primary w-full">
+              Iniciar sesión
+            </button>
+          </form>
+
+          <div id="loginError" class="text-red-500 text-sm mt-4 hidden"></div>
+        </div>
+      </div>
+
+      <!-- Register Form -->
+      <div id="registerForm" class="auth-form hidden">
+        <div class="bg-white rounded-2xl p-8 shadow-xl">
+          <h2 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#7B61FF] to-[#BC56F4]">
+            Únete a ResinArte
+          </h2>
+          
+          <form id="formRegister" class="space-y-4">
+            <div>
+              <label class="field-label mb-2">Correo</label>
+              <input 
+                type="email" 
+                id="registerEmail" 
+                placeholder="tu@correo.com" 
+                required 
+                class="field-input"
+              />
+            </div>
+
+            <div>
+              <label class="field-label mb-2">Contraseña</label>
+              <input 
+                type="password" 
+                id="registerPassword" 
+                placeholder="Mín. 6 caracteres" 
+                required 
+                class="field-input"
+              />
+              <p class="text-xs text-gray-500 mt-1">Mínimo 6 caracteres con mayúscula y número</p>
+            </div>
+
+            <div>
+              <label class="field-label mb-2">Confirmar contraseña</label>
+              <input 
+                type="password" 
+                id="registerPasswordConfirm" 
+                placeholder="••••••••" 
+                required 
+                class="field-input"
+              />
+            </div>
+
+            <button type="submit" class="btn-primary w-full">
+              Crear cuenta
+            </button>
+          </form>
+
+          <div id="registerError" class="text-red-500 text-sm mt-4 hidden"></div>
+          <div id="registerSuccess" class="text-green-500 text-sm mt-4 hidden"></div>
+        </div>
+      </div>
+
+      <!-- Info Box -->
+      <div class="mt-8 bg-white bg-opacity-70 rounded-lg p-6 text-center">
+        <p class="text-gray-700 text-sm">
+          Al registrarte, podrás ver tu historial de personalizaciones y seguimiento de tus pedidos.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Tab Toggle
+    document.getElementById('toggleLogin').addEventListener('click', () => {
+      document.querySelectorAll('.auth-form').forEach(f => f.classList.add('hidden'));
+      document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('loginForm').classList.remove('hidden');
+      document.getElementById('toggleLogin').classList.add('active');
+    });
+
+    document.getElementById('toggleRegister').addEventListener('click', () => {
+      document.querySelectorAll('.auth-form').forEach(f => f.classList.add('hidden'));
+      document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('registerForm').classList.remove('hidden');
+      document.getElementById('toggleRegister').classList.add('active');
+    });
+
+    // Login Handler
+    document.getElementById('formLogin').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const errorDiv = document.getElementById('loginError');
+
+      const result = await handleLogin(email, password);
+      if (result.success) {
+        window.location.href = 'dashboard.html';
+      } else {
+        errorDiv.textContent = result.error;
+        errorDiv.classList.remove('hidden');
+      }
+    });
+
+    // Register Handler
+    document.getElementById('formRegister').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+      const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
+      const errorDiv = document.getElementById('registerError');
+      const successDiv = document.getElementById('registerSuccess');
+
+      if (password !== passwordConfirm) {
+        errorDiv.textContent = 'Las contraseñas no coinciden';
+        errorDiv.classList.remove('hidden');
+        return;
+      }
+
+      const result = await handleRegister(email, password);
+      if (result.success) {
+        successDiv.textContent = '¡Cuenta creada! Revisa tu correo para confirmar. Luego podrás iniciar sesión.';
+        successDiv.classList.remove('hidden');
+        document.getElementById('formRegister').reset();
+      } else {
+        errorDiv.textContent = result.error;
+        errorDiv.classList.remove('hidden');
+      }
+    });
+
+    // Add CSS for auth tabs
+    const style = document.createElement('style');
+    style.textContent = `
+      .auth-tab {
+        color: #6B6B6B;
+      }
+      .auth-tab.active {
+        background: linear-gradient(135deg, #7B61FF 0%, #BC56F4 100%);
+        color: white;
+      }
+      .auth-form.hidden {
+        display: none;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

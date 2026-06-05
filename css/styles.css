@@ -231,6 +231,12 @@ textarea {
   color: var(--text);
 }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
 .gallery-item span {
   position: absolute;
   left: 1rem;
@@ -360,6 +366,24 @@ textarea {
   background: rgba(123, 97, 255, 0.08);
 }
 
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(123, 97, 255, 0.22);
+  border-radius: 999px;
+  background: white;
+  color: var(--primary);
+  font-weight: 700;
+  padding: 0.75rem 1.2rem;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.btn-outline:hover {
+  transform: translateY(-1px);
+  background: rgba(123, 97, 255, 0.08);
+}
+
 .search-input,
 .field-input,
 .newsletter-input {
@@ -370,6 +394,42 @@ textarea {
   background: white;
   color: var(--text);
   outline: none;
+}
+
+.field-error {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+.form-status {
+  margin: 0;
+  border-radius: 20px;
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.form-status.is-info {
+  background: rgba(123, 97, 255, 0.08);
+  color: var(--muted);
+}
+
+.form-status.is-success {
+  background: rgba(22, 163, 74, 0.12);
+  color: #166534;
+}
+
+.form-status.is-error {
+  background: rgba(220, 38, 38, 0.1);
+  color: #991b1b;
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-outline:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
 }
 
 .search-input {
@@ -601,6 +661,10 @@ textarea {
 }
 
 @media (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .instagram-feed {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -639,11 +703,83 @@ textarea {
 
 @media (max-width: 640px) {
   html {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   body {
-    font-size: 14px;
+    font-size: 15px;
+  }
+
+  header .mx-auto {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+  }
+
+  .brand-logo {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    border: 1px solid #E4E1FF;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 12px 28px rgba(123, 97, 255, 0.12);
+  }
+
+  .brand-logo .logo-img {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    width: 6rem;
+    height: 6rem;
+    max-width: none;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    object-fit: cover;
+    box-shadow: none;
+    transform: translate(-50%, -50%);
+  }
+
+  section {
+    scroll-margin-top: 5rem;
+  }
+
+  .hero-panel {
+    border-radius: 24px;
+    padding: 1rem;
+  }
+
+  .hero-panel .card-text {
+    left: 1rem;
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+    border-radius: 20px;
+    padding: 1rem;
+  }
+
+  .hero-panel .card-text h2 {
+    font-size: 1.2rem;
+    line-height: 1.35;
+  }
+
+  .glass-panel {
+    border-radius: 24px;
+  }
+
+  .product-card,
+  .gallery-item,
+  .feed-card,
+  .testimonial-shell,
+  .testimonial-card {
+    border-radius: 24px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
   }
 
   .instagram-feed {
@@ -668,6 +804,16 @@ textarea {
     width: 100%;
     padding: 0.9rem 1.2rem;
     font-size: 0.95rem;
+  }
+
+  .btn-outline {
+    padding: 0.7rem 1rem;
+    font-size: 0.92rem;
+  }
+
+  .product-card .mt-6.flex {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .timeline-step {
@@ -696,17 +842,42 @@ textarea {
   }
 
   .newsletter-input {
-    padding-right: 6rem;
+    padding-right: 1rem;
   }
 
   .newsletter-btn {
-    padding: 0 0.8rem;
+    position: static;
+    width: 100%;
+    margin-top: 0.75rem;
+    padding: 0.85rem 1rem;
     font-size: 0.85rem;
   }
-}
 
-@media (max-width: 640px) {
-  .newsletter-input {
-    padding-right: 8rem;
+  .personalization-form {
+    padding: 1.25rem;
+  }
+
+  .field-input,
+  .newsletter-input,
+  .search-input {
+    min-height: 48px;
+    font-size: 16px;
+  }
+
+  .testimonial-shell {
+    padding: 1rem;
+  }
+
+  .testimonial-shell .mt-6.flex {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .testimonial-control {
+    width: 100%;
+  }
+
+  .lightbox-image {
+    border-radius: 20px;
   }
 }

@@ -1,77 +1,106 @@
-// Manejador del formulario con Supabase
+// Manejador del formulario de personalizacion con Supabase
 
-async function handleFormSubmission(event) {
-  event.preventDefault();
+const RESINARTE_TABLE = 'personalizaciones';
 
-  const form = event.target;
-  const formData = new FormData(form);
+function getFormStatus(form) {
+  return form.querySelector('[data-form-status]');
+}
 
-  // Validar campos requeridos
+function setFormStatus(form, message, type = 'info') {
+  const status = getFormStatus(form);
+  if (!status) return;
+
+  status.textContent = message;
+  status.classList.remove('is-success', 'is-error', 'is-info');
+  status.classList.add(`is-${type}`);
+}
+
+function setSubmitState(form, isSubmitting) {
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (!submitButton) return null;
+
+  if (!submitButton.dataset.defaultText) {
+    submitButton.dataset.defaultText = submitButton.textContent;
+  }
+
+  submitButton.textContent = isSubmitting ? 'Enviando...' : submitButton.dataset.defaultText;
+  submitButton.disabled = isSubmitting;
+  return submitButton;
+}
+
+function validateRequiredFields(form) {
   const requiredFields = form.querySelectorAll('[required]');
   let isValid = true;
 
   requiredFields.forEach(field => {
-    field.classList.remove('border-red-500');
+    field.classList.remove('field-error');
     if (!field.value.trim()) {
       isValid = false;
-      field.classList.add('border-red-500');
+      field.classList.add('field-error');
     }
   });
 
+  return { isValid, requiredFields };
+}
+
+async function handleFormSubmission(event) {
+  event.preventDefault();
+  event.stopImmediatePropagation();
+
+  const form = event.target;
+  const formData = new FormData(form);
+
+  const { isValid, requiredFields } = validateRequiredFields(form);
+
   if (!isValid) {
-    alert('Por favor completa los campos obligatorios.');
+    setFormStatus(form, 'Por favor completa los campos obligatorios.', 'error');
     return;
   }
 
-  // Preparar datos para enviar
+  if (!window.supabaseClient) {
+    setFormStatus(form, 'Supabase no esta configurado. Revisa js/supabase-config.js.', 'error');
+    return;
+  }
+
+  const inspirationFile = formData.get('imagen');
+  const hasFile = inspirationFile instanceof File && inspirationFile.name;
+
   const personalizationData = {
     nombre: formData.get('nombre') || '',
     email: formData.get('email') || '',
-    imagen_inspiracion: formData.get('imagen') || 'No adjuntada',
+    imagen_inspiracion: hasFile ? inspirationFile.name : 'No adjuntada',
     texto_pieza: formData.get('texto') || '',
     color_preferido: formData.get('color') || '',
-    tamaño: formData.get('tamaño') || '',
+    tamano: formData.get('tamano') || '',
     comentarios: formData.get('comentarios') || '',
+    proyecto: 'ResinArte',
     fecha_solicitud: new Date().toISOString(),
     estado: 'pendiente'
   };
 
   try {
-    // Mostrar estado de carga
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    submitButton.textContent = 'Enviando...';
-    submitButton.disabled = true;
+    setSubmitState(form, true);
+    setFormStatus(form, 'Guardando tu solicitud...', 'info');
 
-    // Insertar datos en Supabase
-    const { data, error } = await supabaseClient
-      .from('personalizaciones')
+    const { error } = await window.supabaseClient
+      .from(RESINARTE_TABLE)
       .insert([personalizationData]);
 
     if (error) {
       console.error('Error en Supabase:', error);
-      alert('Hubo un error al enviar tu solicitud. Intenta más tarde.');
-      submitButton.textContent = originalText;
-      submitButton.disabled = false;
+      setFormStatus(form, 'No pudimos guardar tu solicitud. Revisa la tabla en Supabase e intenta otra vez.', 'error');
       return;
     }
 
-    // Éxito
-    alert('¡Solicitud enviada exitosamente! Te contactaremos en menos de 24 horas.');
+    setFormStatus(form, 'Solicitud enviada. Te contactaremos en menos de 24 horas.', 'success');
     form.reset();
 
-    // Reset button
-    submitButton.textContent = originalText;
-    submitButton.disabled = false;
-
-    // Limpiar campos con error
-    requiredFields.forEach(field => field.classList.remove('border-red-500'));
-
+    requiredFields.forEach(field => field.classList.remove('field-error'));
   } catch (error) {
     console.error('Error general:', error);
-    alert('Ocurrió un error inesperado. Intenta de nuevo.');
-    submitButton.textContent = originalText;
-    submitButton.disabled = false;
+    setFormStatus(form, 'Ocurrio un error inesperado. Intenta de nuevo.', 'error');
+  } finally {
+    setSubmitState(form, false);
   }
 }
 

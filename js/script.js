@@ -220,6 +220,8 @@ function initPersonalizationForm() {
   const form = document.querySelector('form.personalization-form');
   if (!form) return;
 
+  if (typeof handleFormSubmission === 'function') return;
+
   form.addEventListener('submit', event => {
     event.preventDefault();
     const requiredFields = form.querySelectorAll('[required]');

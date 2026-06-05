@@ -25,7 +25,7 @@
 
     <header class="sticky top-0 z-50 border-b border-[#e8e8f0] backdrop-blur-xl shadow-sm">
       <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-2 md:px-8">
-        <a class="flex items-center gap-3" href="#home">
+        <a class="brand-logo flex items-center gap-3" href="#home" aria-label="ResinArte inicio">
           <img src="assets/images/logo/LogoResinArte.webp" alt="ResinArte" class="logo-img" />
         </a>
 
@@ -282,7 +282,7 @@
                 <div class="feature-box-sm">Tamaños a medida</div>
               </div>
             </div>
-            <form class="personalization-form glass-panel p-8 shadow-[0_30px_80px_rgba(123,97,255,0.12)]">
+            <form class="personalization-form glass-panel p-8 shadow-[0_30px_80px_rgba(123,97,255,0.12)]" novalidate>
               <div class="grid gap-5">
                 <label class="field-label">Tu nombre</label>
                 <input type="text" name="nombre" placeholder="Ej. Ana Morales" required class="field-input" />
@@ -309,7 +309,7 @@
                   </div>
                   <div>
                     <label class="field-label">Tamaño</label>
-                    <select name="tamaño" class="field-input" required>
+                    <select name="tamano" class="field-input" required>
                       <option value="">Seleccionar</option>
                       <option>Pequeño</option>
                       <option>Mediano</option>
@@ -323,7 +323,7 @@
                 <textarea name="comentarios" rows="4" placeholder="Describe tu idea o estilo" class="field-input resize-none"></textarea>
 
                 <button type="submit" class="btn-primary w-full">Enviar solicitud</button>
-                <p class="text-sm text-[#6B6B6B]">Te contactaremos en menos de 24 horas para confirmar tu diseño personalizado.</p>
+                <p class="form-status is-info" data-form-status>Te contactaremos en menos de 24 horas para confirmar tu diseño personalizado.</p>
               </div>
             </form>
           </div>
