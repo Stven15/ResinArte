@@ -1,5 +1,5 @@
 # Landing Page - Curso de Accesorios con Resina
-
+Sebas
 Una página de ventas profesional y moderna para tu curso de accesorios con resina, similar a la plataforma Hotmart.
 
 ## 📁 Estructura
