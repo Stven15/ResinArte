@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ResinArte | Accesorios de resina premium</title>
+    <meta
+      name="description"
+      content="ResinArte crea accesorios y recuerdos personalizados en resina con acabados únicos, premium y hechos a mano."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-[#F8F9FC] text-[#2D2D2D] overflow-x-hidden">
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+      <div class="liquid-wave"></div>
+      <div class="liquid-glow"></div>
+    </div>
+
+    <div class="cursor-follower"></div>
+
+    <header class="sticky top-0 z-50 border-b border-[#e8e8f0] bg-white/80 backdrop-blur-xl shadow-sm">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 md:px-8">
+        <a class="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.35em] text-[#5A3BFF]" href="#home">
+          <span class="brand-dot"></span>
+          <span class="brand-name">ResinArte</span>
+        </a>
+
+        <button class="nav-toggle inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E4E1FF] bg-white text-[#2D2D2D] shadow-sm md:hidden"
+          aria-label="Abrir menú">
+          <span class="block h-0.5 w-5 bg-current"></span>
+          <span class="mt-1 block h-0.5 w-5 bg-current"></span>
+          <span class="mt-1 block h-0.5 w-5 bg-current"></span>
+        </button>
+
+        <div class="nav-links hidden items-center gap-8 text-sm font-medium text-[#2D2D2D] md:flex">
+          <a class="nav-link" href="#destacados">Catálogo</a>
+          <a class="nav-link" href="#por-que">Por qué</a>
+          <a class="nav-link" href="#galeria">Galería</a>
+          <a class="nav-link" href="#personalizacion">Personalización</a>
+          <a class="nav-link" href="#tienda">Tienda</a>
+        </div>
+
+        <a href="#tienda" class="hidden rounded-full bg-[#7B61FF] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(123,97,255,0.2)] transition hover:bg-[#6845e6] md:inline-flex">
+          Comprar
+        </a>
+      </div>
+
+      <div class="mobile-menu hidden border-t border-[#E4E1FF] bg-white/95 px-5 py-5 md:hidden">
+        <div class="flex flex-col gap-4 text-sm font-medium text-[#2D2D2D]">
+          <a class="nav-link" href="#destacados">Catálogo</a>
+          <a class="nav-link" href="#por-que">Por qué</a>
+          <a class="nav-link" href="#galeria">Galería</a>
+          <a class="nav-link" href="#personalizacion">Personalización</a>
+          <a class="nav-link" href="#tienda">Tienda</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="relative overflow-hidden bg-[#F8F9FC] px-5 py-16 md:px-8 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div class="space-y-8 hero-copy">
+            <span class="inline-flex items-center gap-2 rounded-full border border-[#D8C7FF] bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#7B61FF] shadow-sm">
+              Edición premium
+            </span>
+            <h1 class="max-w-2xl text-4xl font-extrabold leading-tight tracking-[-0.03em] text-[#2D2D2D] sm:text-5xl">
+              Transformamos momentos en arte eterno
+            </h1>
+            <p class="max-w-2xl text-base leading-8 text-[#515151] sm:text-lg">
+              Accesorios y recuerdos personalizados elaborados en resina con acabados únicos y exclusivos.
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row">
+              <a href="#destacados" class="btn-primary inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold shadow-[0_18px_45px_rgba(123,97,255,0.22)] transition hover:-translate-y-0.5">
+                Ver Catálogo
+              </a>
+              <a href="#personalizacion" class="btn-secondary inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition hover:bg-[#FFE6F3]">
+                Solicitar Personalización
+              </a>
+            </div>
+
+            <div class="grid gap-3 sm:grid-cols-3">
+              <div class="info-pill">Exclusividad</div>
+              <div class="info-pill">Creatividad</div>
+              <div class="info-pill">Calidad premium</div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="hero-panel glass-panel overflow-hidden rounded-[36px] border border-white/70 p-6 shadow-[0_40px_90px_rgba(123,97,255,0.14)]">
+              <div class="absolute -right-10 top-6 h-24 w-24 rounded-full bg-[#FFD3EB]/40 blur-2xl"></div>
+              <div class="absolute left-6 top-8 h-16 w-16 rounded-full bg-[#7B61FF]/15 blur-2xl"></div>
+              <div class="relative flex h-full items-center justify-center overflow-hidden rounded-[28px] bg-[#F6F5FF] p-10">
+                <div class="relative aspect-[4/5] w-full max-w-[360px] rounded-[28px] bg-[radial-gradient(circle_at_top,_rgba(255,181,232,0.3),_transparent_45%),linear-gradient(180deg,#fff,#ECE8FF)] shadow-[inset_0_0_0_1px_rgba(123,97,255,0.08)]">
+                  <div class="liquid-spot"></div>
+                  <div class="accent-shape -left-10 top-[40%] h-28 w-28 rounded-full bg-[#FFB5E8]/50 blur-2xl"></div>
+                  <div class="accent-shape top-10 right-8 h-20 w-20 rounded-full bg-[#CDB4FF]/40 blur-2xl"></div>
+                  <div class="card-text absolute bottom-6 left-6 w-[calc(100%-3rem)] rounded-3xl bg-white/80 p-5 shadow-md backdrop-blur-xl">
+                    <p class="text-xs uppercase tracking-[0.3em] text-[#7B61FF]">Selección</p>
+                    <h2 class="mt-3 text-2xl font-semibold text-[#2D2D2D]">Colección cristal líquido</h2>
+                    <p class="mt-2 text-sm leading-6 text-[#5C5C5C]">Llaveros, portavasos y piezas decorativas con un brillo que recuerda el movimiento de la resina.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="destacados" class="px-5 pb-20 md:px-8 lg:pb-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div class="space-y-3">
+              <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Colección destacada</p>
+              <h2 class="max-w-2xl text-3xl font-bold text-[#2D2D2D] sm:text-4xl">Accesorios únicos con alma artesanal</h2>
+            </div>
+            <p class="max-w-xl text-sm leading-6 text-[#5A5A5A]">Explora piezas seleccionadas que combinan color, textura y un acabado brillante inspirado en cristal líquido.</p>
+          </div>
+
+          <div class="grid gap-6 lg:grid-cols-3">
+            <article class="product-card glass-panel group">
+              <div class="product-image bg-[linear-gradient(135deg,#f8e9ff_0%,#f7d8fa_35%,#f1e0ff_100%)]">
+                <span class="product-chip">Llaveros</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-[#2D2D2D]">Llavero Bruma Rosa</h3>
+                <p class="mt-3 text-sm leading-6 text-[#5A5A5A]">Pieza delicada con destellos perlados y nodos brillantes.</p>
+                <div class="mt-6 flex items-center justify-between gap-4">
+                  <span class="text-lg font-semibold text-[#7B61FF]">$28</span>
+                  <button class="btn-outline">Comprar</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card glass-panel group">
+              <div class="product-image bg-[linear-gradient(135deg,#fff3f8_0%,#ffdeed_30%,#ffe9ff_100%)]">
+                <span class="product-chip">Joyería</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-[#2D2D2D]">Aros Celeste Aura</h3>
+                <p class="mt-3 text-sm leading-6 text-[#5A5A5A]">Pendientes ligeros con inserciones de brillo perlado y resina transparente.</p>
+                <div class="mt-6 flex items-center justify-between gap-4">
+                  <span class="text-lg font-semibold text-[#7B61FF]">$42</span>
+                  <button class="btn-outline">Comprar</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card glass-panel group">
+              <div class="product-image bg-[linear-gradient(135deg,#e7f8ff_0%,#d0eeff_40%,#eef7ff_100%)]">
+                <span class="product-chip">Portavasos</span>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-[#2D2D2D]">Set Nube Pastel</h3>
+                <p class="mt-3 text-sm leading-6 text-[#5A5A5A]">Set de dos portavasos con acabados traslúcidos y matices perlados.</p>
+                <div class="mt-6 flex items-center justify-between gap-4">
+                  <span class="text-lg font-semibold text-[#7B61FF]">$36</span>
+                  <button class="btn-outline">Comprar</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="por-que" class="bg-[#FFFFFF] px-5 pb-20 pt-12 md:px-8 lg:pb-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-10 text-center">
+            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">¿Por qué elegirnos?</p>
+            <h2 class="mt-3 text-3xl font-bold text-[#2D2D2D] sm:text-4xl">La experiencia artesanal que inspira confianza</h2>
+          </div>
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="feature-box">✓ Hecho a mano</div>
+            <div class="feature-box">✓ Diseños exclusivos</div>
+            <div class="feature-box">✓ Personalización completa</div>
+            <div class="feature-box">✓ Materiales premium</div>
+            <div class="feature-box">✓ Entrega segura</div>
+            <div class="feature-box">✓ Atención personalizada</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeria" class="px-5 pb-20 md:px-8 lg:pb-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div class="space-y-3">
+              <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Galería</p>
+              <h2 class="text-3xl font-bold text-[#2D2D2D] sm:text-4xl">Una ventana a nuestras piezas más soñadas</h2>
+            </div>
+            <p class="max-w-xl text-sm leading-6 text-[#5A5A5A]">Toca cualquier imagen para ver el detalle, textura y transparencia que hace cada joya especial.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <button class="gallery-item" data-image="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80">
+              <span>Flores encapsuladas</span>
+            </button>
+            <button class="gallery-item" data-image="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=80">
+              <span>Llavero cristal</span>
+            </button>
+            <button class="gallery-item" data-image="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80">
+              <span>Colgante brillante</span>
+            </button>
+            <button class="gallery-item" data-image="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80">
+              <span>Decoración resinada</span>
+            </button>
+            <button class="gallery-item" data-image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80">
+              <span>Regalo personalizado</span>
+            </button>
+            <button class="gallery-item" data-image="https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=800&q=80">
+              <span>Portavasos de lujo</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#F9F8FF] px-5 pb-20 pt-12 md:px-8 lg:pb-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-12 text-center">
+            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Proceso</p>
+            <h2 class="mt-3 text-3xl font-bold text-[#2D2D2D] sm:text-4xl">Cada pieza nace de una idea con alma</h2>
+          </div>
+          <div class="timeline-grid">
+            <div class="timeline-step">
+              <span>1</span>
+              <h3>Idea del cliente</h3>
+              <p>Recibimos tu inspiración y formato deseado.</p>
+            </div>
+            <div class="timeline-step">
+              <span>2</span>
+              <h3>Diseño personalizado</h3>
+              <p>Desarrollamos un boceto con propuestas de color y acabado.</p>
+            </div>
+            <div class="timeline-step">
+              <span>3</span>
+              <h3>Elaboración artesanal</h3>
+              <p>Fabricamos cada pieza con cuidado y detalles únicos.</p>
+            </div>
+            <div class="timeline-step">
+              <span>4</span>
+              <h3>Acabado premium</h3>
+              <p>Pulimos, sellamos y añadimos brillo intenso.</p>
+            </div>
+            <div class="timeline-step">
+              <span>5</span>
+              <h3>Entrega final</h3>
+              <p>Empaquetamos con elegancia y enviamos con seguridad.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonios" class="px-5 pb-20 md:px-8 lg:pb-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-10 text-center">
+            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Testimonios</p>
+            <h2 class="mt-3 text-3xl font-bold text-[#2D2D2D] sm:text-4xl">Historias de clientes que aman su pieza</h2>
+          </div>
+          <div class="testimonial-shell glass-panel p-6 shadow-[0_30px_80px_rgba(123,97,255,0.12)]">
+            <div class="testimonial-slider" aria-live="polite"></div>
+            <div class="mt-6 flex items-center justify-between gap-4">
+              <button class="testimonial-control prev">Anterior</button>
+              <div class="testimonial-dots flex gap-2"></div>
+              <button class="testimonial-control next">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="personalizacion" class="bg-[#FFFFFF] px-5 pb-20 pt-12 md:px-8 lg:pb-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="grid gap-12 lg:grid-cols-[0.9fr_0.85fr] lg:items-center">
+            <div class="space-y-4">
+              <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Personalización</p>
+              <h2 class="text-3xl font-bold text-[#2D2D2D] sm:text-4xl">Crea tu pieza con emoción y detalle</h2>
+              <p class="max-w-xl text-sm leading-7 text-[#5A5A5A]">Sube imágenes, escribe el mensaje especial y elige colores y tamaños para una pieza totalmente única.</p>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="feature-box-sm">Subida de imágenes</div>
+                <div class="feature-box-sm">Texto personalizado</div>
+                <div class="feature-box-sm">Selección de color</div>
+                <div class="feature-box-sm">Tamaños a medida</div>
+              </div>
+            </div>
+            <form class="personalization-form glass-panel p-8 shadow-[0_30px_80px_rgba(123,97,255,0.12)]">
+              <div class="grid gap-5">
+                <label class="field-label">Tu nombre</label>
+                <input type="text" placeholder="Ej. Ana Morales" required class="field-input" />
+
+                <label class="field-label">Sube tu inspiración</label>
+                <input type="file" accept="image/*" class="field-input file-input" />
+
+                <label class="field-label">Texto para la pieza</label>
+                <input type="text" placeholder="Mensaje, frase o nombre" class="field-input" />
+
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label class="field-label">Color preferido</label>
+                    <select class="field-input" required>
+                      <option value="">Elegir tono</option>
+                      <option>Perlado rosa</option>
+                      <option>Celeste cristal</option>
+                      <option>Marfil suave</option>
+                      <option>Lavanda</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="field-label">Tamaño</label>
+                    <select class="field-input" required>
+                      <option value="">Seleccionar</option>
+                      <option>Pequeño</option>
+                      <option>Mediano</option>
+                      <option>Grande</option>
+                      <option>Configurado</option>
+                    </select>
+                  </div>
+                </div>
+
+                <label class="field-label">Comentarios adicionales</label>
+                <textarea rows="4" placeholder="Describe tu idea o estilo" class="field-input resize-none"></textarea>
+
+                <button type="submit" class="btn-primary w-full">Enviar solicitud</button>
+                <p class="text-sm text-[#6B6B6B]">Te contactaremos en menos de 24 horas para confirmar tu diseño personalizado.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="tienda" class="px-5 pb-20 md:px-8 lg:pb-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div class="space-y-3">
+              <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Tienda online</p>
+              <h2 class="text-3xl font-bold text-[#2D2D2D] sm:text-4xl">Compra con confianza y estilo</h2>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <input id="product-search" type="search" placeholder="Buscar producto..." class="search-input" />
+              <div id="category-filters" class="flex flex-wrap gap-3"></div>
+            </div>
+          </div>
+
+          <div class="grid gap-6 lg:grid-cols-[1fr_320px]">
+            <div>
+              <div id="product-grid" class="grid gap-6 sm:grid-cols-2"></div>
+            </div>
+            <aside class="sticky top-24 rounded-[32px] bg-[#F7F4FF] p-6 shadow-[0_30px_60px_rgba(123,97,255,0.12)]">
+              <h3 class="text-xl font-semibold text-[#2D2D2D]">Tu carrito</h3>
+              <p class="mt-2 text-sm text-[#5A5A5A]">Guarda favoritos, revisa precios y avanza con un pago seguro.</p>
+              <div class="mt-6 space-y-4">
+                <div class="cart-summary glass-panel p-4">
+                  <div class="flex items-center justify-between text-sm text-[#5A5A5A]"><span>Productos</span><span id="cart-count">0</span></div>
+                  <div class="mt-3 flex items-center justify-between text-lg font-semibold text-[#7B61FF]"><span>Total</span><span id="cart-total">$0</span></div>
+                </div>
+                <button class="btn-secondary w-full">Revisar pago seguro</button>
+                <div class="grid gap-2 rounded-[24px] bg-white p-4 text-sm text-[#5A5A5A] shadow-sm">
+                  <p class="font-semibold text-[#2D2D2D]">Beneficios</p>
+                  <p>✅ Pago seguro</p>
+                  <p>✅ Envío protegido</p>
+                  <p>✅ Embalaje premium</p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#FFFFFF] px-5 pb-20 pt-12 md:px-8 lg:pb-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="mb-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Redes sociales</p>
+              <h2 class="mt-3 text-3xl font-bold text-[#2D2D2D] sm:text-4xl">Conecta con nuestro mundo creativo</h2>
+              <p class="mt-4 max-w-xl text-sm leading-7 text-[#5A5A5A]">Síguenos para ver lanzamientos, detalles de piezas y procesar pedidos exclusivos con inspiración constante.</p>
+            </div>
+            <div class="social-grid rounded-[32px] bg-[#F7F4FF] p-6 shadow-[0_30px_50px_rgba(123,97,255,0.12)]">
+              <a href="#" class="social-pill">Instagram</a>
+              <a href="#" class="social-pill">Facebook</a>
+              <a href="#" class="social-pill">TikTok</a>
+              <a href="#" class="social-pill">WhatsApp</a>
+            </div>
+          </div>
+          <div class="instagram-feed grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="feed-card">Feed 1</div>
+            <div class="feed-card">Feed 2</div>
+            <div class="feed-card">Feed 3</div>
+            <div class="feed-card">Feed 4</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-[#E8E6F5] bg-white/95 px-5 py-12 md:px-8">
+      <div class="mx-auto max-w-7xl space-y-10 text-sm text-[#5A5A5A]">
+        <div class="grid gap-8 lg:grid-cols-3">
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Contacto</p>
+            <p>hola@resinarte.com</p>
+            <p>+56 9 1234 5678</p>
+            <p>Atención: lun - vie / 10:00 - 19:00</p>
+          </div>
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Políticas</p>
+            <a href="#privacy" class="footer-link">Política de privacidad</a>
+            <a href="#terms" class="footer-link">Términos y condiciones</a>
+            <a href="#" class="footer-link">Envíos y devoluciones</a>
+          </div>
+          <div class="space-y-3">
+            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-[#7B61FF]">Newsletter</p>
+            <p>Recibe inspiración, ofertas y lanzamientos exclusivos.</p>
+            <div class="relative">
+              <input type="email" placeholder="Tu correo" class="newsletter-input" />
+              <button class="newsletter-btn">Suscribirse</button>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-[#9B9B9B]">© <span id="footer-year">2026</span> ResinArte. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <div class="fixed right-5 bottom-5 z-50 flex flex-col gap-3">
+      <a href="#" class="social-floating">IG</a>
+      <a href="#" class="social-floating">FB</a>
+      <a href="#" class="social-floating">TT</a>
+      <a href="#" class="social-floating">WA</a>
+    </div>
+
+    <div class="lightbox hidden" id="lightbox">
+      <button class="lightbox-close" type="button">✕</button>
+      <img alt="Detalle producto" class="lightbox-image" />
+    </div>
+
+    <script src="config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
